@@ -1,0 +1,173 @@
+<template>
+    <div id="Service">
+        <div class="xiaocc" style="margin-left: 1500px;font-size:40px;">
+        <i class="el-icon-close" @click="ho"></i>
+        </div>
+        <div class="container text-center">
+            <!-- <img src="../img/CT-01.jpg" alt=""> -->
+            <h2>
+POWER TABLE <br/>
+CHARGING STATION<br/>
+Charging Table</h2>
+            <p style="color:#b2b2b2"></p>
+        </div>
+        <div class="container">
+            <div class="Service-container row">
+                <div class="Service-item col-xs-12 col-sm-6 col-md-3 wow slideInUp" 
+                v-for="(item,index) in serviceList" :key="index" @click="soho(item.path)">
+                    <div class="Service-item-wrapper">
+                        <div class="Service-item-top">
+                            <h4>{{item.title}}</h4>
+                            <i></i>
+                            <p>{{item.eng_title}}</p>
+                        </div>
+                        <div class="Service-item-img">
+                            <img :src="item.img" alt="产品">
+                        </div>
+                        <div class="Service-item-border"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>
+<script>
+import { WOW } from 'wowjs';
+export default {
+    name: 'Service',
+    data(){
+        return{
+            serviceList: [
+                {
+                    id: 'section-1',
+                    title: 'SOHO',
+                    eng_title: 'Charging Table',
+                    img: require('../img/CT-01-1.jpg'),
+                    path:"/product/product1/soho"
+                },{
+                    id: 'section-2',
+                    title: 'Cocktail',
+                    eng_title: 'Backlit Charging Table',
+                    img: require('../img/CT-01-2.jpg'),
+                     path:"/product/product1/2"
+                },{
+                    id: 'section-3',
+                    title: 'Bistrol',
+                    eng_title: 'Charging Table Lite',
+                    img: require('../img/CT-03-3.jpg'),
+                     path:"/product/product1/3"
+                },{
+                    id: 'section-4',
+                    title: 'GYPSY',
+                    eng_title: 'Portable Charging Table',
+                    img: require('../img/CT-04-4.jpg'),
+                     path:"/product/product1/4"
+                },
+                {
+                    id: 'section-5',
+                    title: 'SOHO',
+                    eng_title: 'Glass Charging Table',
+                    img: require('../img/CT-05-5.jpg'),
+                     path:"/product/product1/5"
+                }
+            ]
+        }
+    },
+    mounted(){
+        var wow = new WOW();
+        wow.init();
+    },
+    methods:{
+         // 点击
+    soho(path){
+        this.$router.push(path)
+    },
+    ho() {
+      this.$router.push("@/view/HomePage");
+    },
+    },
+   
+}
+</script>
+<style scoped>
+/* 媒体查询（手机） */
+/* @media screen and (max-width: 100%) {
+  #Service img{
+    height: 100%;
+  }
+} */
+
+.Service-container{
+    padding: 30px 50px;
+}
+.Service-item{
+    margin-bottom: 50px;
+}
+.Service-item-wrapper{
+    cursor: pointer;
+    background: rgba(244,244,244,1);
+    overflow: hidden;
+    position: relative;
+}
+.Service-item-top{
+    width: 100%;
+    height: 130px;
+    padding: 30px;
+    text-align: center;
+}
+.Service-item-top h4{
+    font-weight: bold;
+}
+.Service-item-top>i{
+    display: inline-block;
+    width: 25px;
+    height: 2px;
+    background: #28f;
+}
+.Service-item-top>p{
+    color: #b2b2b2;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all .5s ease;
+}
+.Service-item-img{
+    width: 100%;
+    margin: 0 15%;
+    overflow: hidden;
+}
+.Service-item-img img{
+    width: 70%;
+    transition: all 0.5s ease;
+}
+.Service-item-border{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 9999999;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease;
+    border: 1px solid #000;
+    opacity: 0;
+}
+.Service-item-wrapper:hover .Service-item-top > i{
+    opacity: 0;
+}
+.Service-item-wrapper:hover .Service-item-top > p{
+    opacity: 1;
+    transform: translateY(-10px);
+}
+.Service-item-wrapper:hover .Service-item-img > img{
+    transform: scale(1.1,1.1);
+}
+.Service-item-wrapper:hover > .Service-item-border{
+    opacity: 1;
+    width: 90%;
+    height: 90%;
+}
+</style>
+
